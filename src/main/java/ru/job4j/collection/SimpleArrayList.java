@@ -16,9 +16,7 @@ public class SimpleArrayList<T> implements List<T> {
     @Override
     public void add(T value) {
         if (size + 1 > container.length) {
-            container = Arrays.copyOf(
-                    container, container.length * 2
-            );
+            extend();
         }
         container[size] = value;
         size++;
@@ -27,6 +25,7 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T set(int index, T newValue) {
+        Objects.checkIndex(index, container.length);
         T oldValue = container[index];
         container[index] = newValue;
         modCount++;
@@ -35,19 +34,18 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        if (!indexValidation(index)) {
-            throw new IndexOutOfBoundsException();
-        }
+        Objects.checkIndex(index, container.length);
         T removedValue = container[index];
         if (index != container.length - 1) {
             System.arraycopy(
                     container,
                     index + 1,
-                    container, index,
+                    container,
+                    index,
                     container.length - index - 1
             );
         }
-        container[container.length - 1] = null;
+        container[size - 1] = null;
         size--;
         modCount++;
         return removedValue;
@@ -55,9 +53,7 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        if (!indexValidation(index)) {
-            throw new IndexOutOfBoundsException();
-        }
+        Objects.checkIndex(index, container.length);
         return container[index];
     }
 
@@ -82,9 +78,6 @@ public class SimpleArrayList<T> implements List<T> {
 
             @Override
             public T next() {
-                if (expectedModCount != modCount) {
-                    throw new ConcurrentModificationException();
-                }
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
@@ -93,11 +86,11 @@ public class SimpleArrayList<T> implements List<T> {
         };
     }
 
-    private boolean indexValidation(int index) {
-        try {
-            return Objects.checkIndex(index, container.length) == index;
-        } catch (IndexOutOfBoundsException ex) {
-            return false;
+    private void extend() {
+        if (container.length == 0) {
+            container = (T[]) new Object[10];
+        } else {
+            container = Arrays.copyOf(container, container.length * 2);
         }
     }
 }

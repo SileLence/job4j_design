@@ -125,4 +125,29 @@ public class SimpleArrayListTest {
         list.add(0);
         iterator.next();
     }
+
+    @Test
+    public void whenZeroCapacityListAddOneElementThenSizeIsOne() {
+        list = new SimpleArrayList<>(0);
+        list.add(1);
+        Assert.assertEquals(1, list.size());
+    }
+
+    @Test
+    public void whenRemoveLastElementThenLastAddedElementIsNull() {
+        list.remove(2);
+        Assert.assertNull(list.get(2));
+    }
+
+    @Test
+    public void whenRemoveFirstElementThenLastAddedElementIsNull() {
+        list.remove(0);
+        Assert.assertNull(list.get(2));
+    }
+
+    @Test
+    public void whenRemoveMiddleElementThenLastAddedElementIsNull() {
+        list.remove(1);
+        Assert.assertNull(list.get(2));
+    }
 }
