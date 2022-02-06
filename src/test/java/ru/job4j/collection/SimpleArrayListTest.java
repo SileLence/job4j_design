@@ -133,21 +133,21 @@ public class SimpleArrayListTest {
         Assert.assertEquals(1, list.size());
     }
 
-    @Test
-    public void whenRemoveLastElementThenLastAddedElementIsNull() {
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenRemoveLastElementThenLastAddedElementIsNotExist() {
         list.remove(2);
-        Assert.assertNull(list.get(2));
+        list.get(2);
     }
 
-    @Test
-    public void whenRemoveFirstElementThenLastAddedElementIsNull() {
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenRemoveFirstElementThenLastAddedElementIsNotExist() {
         list.remove(0);
-        Assert.assertNull(list.get(2));
+        list.get(2);
     }
 
-    @Test
-    public void whenRemoveMiddleElementThenLastAddedElementIsNull() {
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void whenRemoveMiddleElementThenLastAddedElementIsNotExist() {
         list.remove(1);
-        Assert.assertNull(list.get(2));
+        list.get(2);
     }
 }

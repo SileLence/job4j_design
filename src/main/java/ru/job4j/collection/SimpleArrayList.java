@@ -2,7 +2,11 @@ package ru.job4j.collection;
 
 import ru.job4j.list.List;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SimpleArrayList<T> implements List<T> {
     private T[] container;
@@ -25,8 +29,7 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T set(int index, T newValue) {
-        Objects.checkIndex(index, container.length);
-        T oldValue = container[index];
+        T oldValue = get(index);
         container[index] = newValue;
         modCount++;
         return oldValue;
@@ -34,8 +37,7 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        Objects.checkIndex(index, container.length);
-        T removedValue = container[index];
+        T removedValue = get(index);
         if (index != container.length - 1) {
             System.arraycopy(
                     container,
@@ -53,7 +55,7 @@ public class SimpleArrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        Objects.checkIndex(index, container.length);
+        Objects.checkIndex(index, size);
         return container[index];
     }
 
