@@ -1,6 +1,4 @@
-package ru.job4j.collection;
-
-import ru.job4j.list.List;
+package ru.job4j.collection.arraylist;
 
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
