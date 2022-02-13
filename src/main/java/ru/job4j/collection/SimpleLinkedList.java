@@ -40,23 +40,16 @@ public class SimpleLinkedList<E> implements List<E> {
 
     @Override
     public Iterator<E> iterator() {
-        final Node<E>[] arrayOfIterator = new Node[size];
-        if (size != 0) {
-            arrayOfIterator[0] = first;
-            for (int i = 1; i < size; i++) {
-                arrayOfIterator[i] = arrayOfIterator[i - 1].next;
-            }
-        }
         return new Iterator<>() {
             final int expectedModCount = modCount;
-            int cursor = 0;
+            Node<E> current = first;
 
         	@Override
         	public boolean hasNext() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-        		return cursor != size;
+        		return current != null;
         	}
         	
         	@Override
@@ -64,7 +57,9 @@ public class SimpleLinkedList<E> implements List<E> {
         		if (!hasNext()) {
         			throw new NoSuchElementException();
         		}
-        		return arrayOfIterator[cursor++].value;
+                Node<E> result = current;
+                current = current.next;
+        		return result.value;
         	}
         };
     }
