@@ -107,17 +107,19 @@ public class SimpleLinkedList<E> implements List<E> {
 
     private Node<E> getNodeByIndex(int index) {
         Objects.checkIndex(index, size);
+        Node<E> result;
         if (index == 0) {
-            return first;
+            result = first;
         } else if (index == size - 1) {
-            return last;
-        }
-        Node<E> result = first.next;
-        for (int i = 1; i < size - 1; i++) {
-            if (i != index) {
-                result = result.next;
-            } else {
-                break;
+            result = last;
+        } else {
+            result = first.next;
+            for (int i = 1; i < size - 1; i++) {
+                if (i != index) {
+                    result = result.next;
+                } else {
+                    break;
+                }
             }
         }
         return result;
