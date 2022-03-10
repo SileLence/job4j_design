@@ -40,6 +40,6 @@ public class ListUtils {
     }
 
     public static <T> void removeAll(List<T> list, List<T> elements) {
-        removeIf(list, elements::contains);
+        ListUtils.removeIf(list, elements::contains);
     }
 }
