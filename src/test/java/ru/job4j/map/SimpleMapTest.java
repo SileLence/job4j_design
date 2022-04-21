@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 public class SimpleMapTest {
 
     @Test
-    public void whenPutDifferentKeysThenTrue () {
+    public void whenPutDifferentKeysThenTrue() {
         Map<String, Integer> map = new SimpleMap<>();
         map.put("Madagascar", 345);
         boolean expected = map.put("Maldives", 812798);
@@ -29,7 +29,7 @@ public class SimpleMapTest {
     }
 
     @Test
-    public void whenPutNullKeyThenTrue () {
+    public void whenPutNullKeyThenTrue() {
         Map<String, Integer> map = new SimpleMap<>();
         boolean expected = map.put(null, 0);
         assertTrue(expected);
