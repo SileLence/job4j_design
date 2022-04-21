@@ -127,7 +127,7 @@ public class SimpleMapTest {
     @Test
     public void whenRemoveEmptyTableThenFalse() {
         Map<String, Integer> map = new SimpleMap<>();
-        boolean actual = map.remove("Crete");
+        boolean actual = map.remove("Madagascar");
         assertFalse(actual);
     }
 }

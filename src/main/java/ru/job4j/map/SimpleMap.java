@@ -11,6 +11,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     private static int capacity = 8;
     private int count = 0;
     private int modCount = 0;
+    @SuppressWarnings("unchecked")
     private MapEntry<K, V>[] table = new MapEntry[capacity];
 
     private int hash(int hashCode) {
@@ -24,6 +25,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
     private void expand() {
         if (count >= (capacity * LOAD_FACTOR)) {
             capacity *= 2;
+            @SuppressWarnings("unchecked")
             MapEntry<K, V>[] newTable = new MapEntry[capacity];
             for (int i = 0; i < table.length - 1; i++) {
                 if (table[i] != null) {
@@ -114,6 +116,5 @@ public class SimpleMap<K, V> implements Map<K, V> {
             this.key = key;
             this.value = value;
         }
-
     }
 }
