@@ -120,7 +120,7 @@ public class SimpleMapTest {
         Map<String, Integer> map = new SimpleMap<>();
         map.put("Madagascar", 345);
         map.put("Maldives", 812798);
-        boolean actual = map.remove("Crete");
+        boolean actual = map.remove("Phu Quoc");
         assertFalse(actual);
     }
 
