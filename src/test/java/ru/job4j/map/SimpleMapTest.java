@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class SimpleMapTest {
@@ -97,6 +98,15 @@ public class SimpleMapTest {
         Integer expected = 0;
         Integer actual = map.get(null);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void whenGetSameIndexButDifferentKeysThenNull() {
+        Map<String, Integer> map = new SimpleMap<>();
+        map.put("Madagascar", 345);
+        map.put("Maldives", 812798);
+        Object actual = map.get("Crete");
+        assertNull(actual);
     }
 
     @Test
