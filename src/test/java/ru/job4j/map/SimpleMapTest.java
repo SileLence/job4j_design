@@ -130,4 +130,12 @@ public class SimpleMapTest {
         boolean actual = map.remove("Madagascar");
         assertFalse(actual);
     }
+
+    @Test
+    public void whenRemoveSameIndexButDifferentKeysThenFalse() {
+        Map<String, Integer> map = new SimpleMap<>();
+        map.put("Maldives", 345);
+        boolean actual = map.remove("Crete");
+        assertFalse(actual);
+    }
 }
