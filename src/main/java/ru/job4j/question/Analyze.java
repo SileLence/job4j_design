@@ -17,7 +17,8 @@ public class Analyze {
             if (setUser.equals(mapUser)) {
                 curr.remove(setUser);
                 prevMap.remove(setUser.getId());
-            } else if (setUser.getId() == mapUser.getId()
+            } else if (mapUser != null
+                    && setUser.getId() == mapUser.getId()
                     && !setUser.getName().equals(mapUser.getName())) {
                 info.setChanged(info.getChanged() + 1);
                 curr.remove(setUser);
