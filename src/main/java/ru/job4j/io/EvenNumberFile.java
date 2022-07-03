@@ -1,5 +1,5 @@
 package ru.job4j.io;
-
+//
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -25,3 +25,4 @@ public class EvenNumberFile {
 
     }
 }
+//
