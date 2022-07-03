@@ -16,7 +16,6 @@ public class LogFilter {
                     result.add(line);
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,6 +26,5 @@ public class LogFilter {
         LogFilter logFilter = new LogFilter();
         List<String> log = logFilter.filter("log.txt");
         System.out.println(log);
-
     }
 }
