@@ -17,13 +17,14 @@ public class ConfigTest {
                 config.value("server.url"),
                 is("https://example.com/startpage")
         );
-        assertThat(config.value("startup.keys"), is("one, two"));
-        assertThat(config.value("access.level"), is("admin = 2"));
+        assertThat(config.value("startup.keys"), is("one,two"));
+        assertThat(config.value("access.level"), is("admin=2"));
     }
 
     @Test
-    public void whenHasCommentsAndEmptyLines() {
-        String path = "src/main/resources/test_comments_empty_lines.properties";
+    public void whenHasCommentEmptyLineSpace() {
+        String path
+                = "src/main/resources/test_comment_empty_line_space.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("server.name"), is("test_server"));
@@ -31,13 +32,41 @@ public class ConfigTest {
                 config.value("server.url"),
                 is("https://example.com/startpage")
         );
-        assertThat(config.value("startup.keys"), is("one, two"));
-        assertThat(config.value("access.level"), is("admin = 2"));
+        assertThat(config.value("startup.keys"), is("one,two"));
+        assertThat(config.value("access.level"), is("admin=2"));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void whenHasErrors() {
-        String path = "src/main/resources/test_errors.properties";
+    public void whenNoEqualsSymbol() {
+        String path = "src/main/resources/test_no_equals_symbol.properties";
+        Config config = new Config(path);
+        config.load();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNoKey() {
+        String path = "src/main/resources/test_no_key.properties";
+        Config config = new Config(path);
+        config.load();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNoValue() {
+        String path = "src/main/resources/test_no_value.properties";
+        Config config = new Config(path);
+        config.load();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNoKeyNoValue() {
+        String path = "src/main/resources/test_no_key_no_value.properties";
+        Config config = new Config(path);
+        config.load();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenWrongFormat() {
+        String path = "src/main/resources/test_wrong_format.properties";
         Config config = new Config(path);
         config.load();
     }

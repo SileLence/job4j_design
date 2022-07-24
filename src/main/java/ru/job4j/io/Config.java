@@ -3,6 +3,7 @@ package ru.job4j.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,14 +23,16 @@ public class Config {
                      = new BufferedReader(new FileReader(this.path))) {
             List<String> strings = read.lines().toList();
             for (String str : strings) {
+                str = str.replaceAll(" ", "");
                 if (!str.startsWith("#") && !str.isEmpty()) {
-                    String[] s = str.split("=", 2);
-                    if (s.length < 2) {
+                    List<String> s = Arrays.stream(
+                            str.split("=", 2)).toList();
+                    if (s.size() < 2 || s.contains("")) {
                         throw new IllegalArgumentException(
                                 "The file contains errors"
                         );
                     }
-                    values.put(s[0], s[1]);
+                    values.put(s.get(0), s.get(1));
                 }
             }
         } catch (IOException e) {
