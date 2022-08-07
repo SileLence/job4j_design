@@ -26,8 +26,4 @@ public class Analyze {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        unavailable("server.log", "unavailable.csv");
-    }
 }
