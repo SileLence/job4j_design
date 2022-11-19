@@ -1,5 +1,6 @@
 package ru.job4j.io;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,10 +26,10 @@ public class Search {
             throw new IllegalArgumentException(
                     "Not provided folder path or file extension");
         }
-        if (!args[0].matches("^([a-z]|[A-Z]):\\\\.*")) {
+        if (!new File(args[0]).isDirectory()) {
             throw new IllegalArgumentException("Incorrect path");
         }
-        if (!args[1].matches("\\.([a-z]|[A-Z]|[0-9])+")) {
+        if (!(args[1].startsWith(".") && args[1].length() > 1)) {
             throw new IllegalArgumentException("Incorrect file extension");
         }
     }
