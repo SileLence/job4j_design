@@ -57,8 +57,12 @@ public class Zip {
         if (!(params.get("e").startsWith(".") && params.get("e").length() > 1)) {
             throw new IllegalArgumentException("Incorrect value of '-e' key");
         }
-        if (params.get("o").contains("\\") && !new File(params.get("o")).isFile()) {
-            throw new IllegalArgumentException("Incorrect output file path");
+        if (params.get("o").contains("\\")) {
+            String outputPath = params.get("o");
+            outputPath = outputPath.substring(0, outputPath.lastIndexOf("\\"));
+            if (!new File(outputPath).isDirectory()) {
+                throw new IllegalArgumentException("Incorrect output file path");
+            }
         }
         if (!(params.get("o").endsWith(".zip") && params.get("o").length() > 4)) {
             throw new IllegalArgumentException("Incorrect output file format");
