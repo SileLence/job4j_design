@@ -57,10 +57,10 @@ public class ConsoleChat {
         if (isWait && ChatConstants.CONTINUE.equalsIgnoreCase(userMsg)) {
             this.continueChat();
         }
-        if (userMsg.equalsIgnoreCase(ChatConstants.STOP)) {
+        if (ChatConstants.STOP.equalsIgnoreCase(userMsg)) {
             this.stopChat();
         }
-        if (userMsg.equalsIgnoreCase(ChatConstants.FINISH)) {
+        if (ChatConstants.FINISH.equalsIgnoreCase(userMsg)) {
             this.closeChat();
         }
     }
