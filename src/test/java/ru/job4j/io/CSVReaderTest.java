@@ -23,10 +23,8 @@ class CSVReaderTest {
         File file = folder.resolve("source.csv").toFile();
         File target = folder.resolve("target.csv").toFile();
         ArgsName argsName = ArgsName.of(new String[]{
-                "-path=" + file.getAbsolutePath(),
-                "-delimiter=;",
-                "-out=" + target.getAbsolutePath(),
-                "-filter=name,education"});
+                "-path=" + file.getAbsolutePath(), "-delimiter=;",
+                "-out=" + target.getAbsolutePath(), "-filter=name,education"});
         Files.writeString(file.toPath(), data);
         Files.writeString(target.toPath(), "");
         String expected = String.join(
