@@ -89,8 +89,6 @@ public class CSVReader {
     }
 
     public static void main(String[] args) throws IOException {
-        long start = System.currentTimeMillis();
         handle(ArgsName.of(args));
-        System.out.println(System.currentTimeMillis() - start);
     }
 }
