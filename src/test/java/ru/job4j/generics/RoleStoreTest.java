@@ -28,6 +28,7 @@ public class RoleStoreTest {
         Role expected = store.findById("5");
         Assert.assertNull(expected);
     }
+
     @Test
     public void whenAddDuplicateAndFindRole() {
         RoleStore store = new RoleStore();
@@ -76,7 +77,6 @@ public class RoleStoreTest {
     @Test
     public void whenCantDeleteRole() {
         RoleStore store = new RoleStore();
-        Role role = new Role("1", "Role Name");
         boolean actual = store.delete("2");
         Assert.assertFalse(actual);
     }

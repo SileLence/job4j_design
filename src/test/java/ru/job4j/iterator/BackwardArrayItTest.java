@@ -9,7 +9,6 @@ import static org.hamcrest.Matchers.is;
 
 public class BackwardArrayItTest {
 
-
     @Test
     public void whenMultiCallHasNextThenTrue() {
         BackwardArrayIt it = new BackwardArrayIt(
