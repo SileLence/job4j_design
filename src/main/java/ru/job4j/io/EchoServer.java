@@ -13,10 +13,6 @@ public class EchoServer {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(EchoServer.class);
     private static final String HTTP_HEADER = "HTTP/1.1 200 OK\r\n\r\n";
-    private static final String PARAMETER_PREFIX = "/?=";
-    private static final String HELLO = "Hello";
-    private static final String EXIT = "Exit";
-    private static final String WHAT = "What?";
     
     public static void main(String[] args) {
         try (ServerSocket server = new ServerSocket(9000)) {
@@ -25,16 +21,11 @@ public class EchoServer {
                 try (OutputStream out = socket.getOutputStream();
                      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
                     out.write(HTTP_HEADER.getBytes());
-                    for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
-                        if (str.contains(PARAMETER_PREFIX)) {
-                            String param = str.split(PARAMETER_PREFIX)[1];
-                            if (param.contains(HELLO)) {
-                                out.write(HELLO.getBytes());
-                            } else if (param.contains(EXIT)) {
-                                server.close();
-                            } else {
-                                out.write(WHAT.getBytes());
-                            }
+                    String str = in.readLine();
+                    if (str.contains("msg=")) {
+                        String value = str.substring(str.indexOf("=") + 1, str.lastIndexOf(" "));
+                        if (value.equalsIgnoreCase("bye")) {
+                            server.close();
                         }
                     }
                     out.flush();
