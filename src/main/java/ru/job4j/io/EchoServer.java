@@ -24,8 +24,12 @@ public class EchoServer {
                     String str = in.readLine();
                     if (str.contains("msg=")) {
                         String value = str.substring(str.indexOf("=") + 1, str.lastIndexOf(" "));
-                        if ("bye".equalsIgnoreCase(value)) {
+                        if ("exit".equalsIgnoreCase(value)) {
                             server.close();
+                        } else if ("hello".equalsIgnoreCase(value)) {
+                            out.write("Hello!".getBytes());
+                        } else {
+                            out.write("What?".getBytes());
                         }
                     }
                     out.flush();
