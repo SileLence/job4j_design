@@ -29,10 +29,7 @@ public class Contact implements Serializable {
     
     @Override
     public String toString() {
-        return "Contact{" +
-            "zipCode=" + zipCode +
-            ", phone='" + phone + '\'' +
-            '}';
+        return String.format("Contact{zipCode=%d, phone='%s'}", zipCode, phone);
     }
     
     public static void main(String[] args) throws IOException, ClassNotFoundException {
