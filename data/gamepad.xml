@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<gamepad model="Xbox One Wireless Controller" color="White">
+    <isActive>false</isActive>
+    <battery>
+        <charge>97</charge>
+        <isRechargeble>false</isRechargeble>
+        <type>AA</type>
+    </battery>
+    <buttons>
+        <button>X</button>
+        <button>Y</button>
+        <button>A</button>
+        <button>B</button>
+        <button>cross</button>
+    </buttons>
+</gamepad>
