@@ -18,8 +18,8 @@ public class ElectronicComponent {
     
     @Override
     public String toString() {
-        return "ElectronicComponent{" +
-            "type='" + type + '\'' +
-            '}';
+        return "ElectronicComponent{"
+            + "type='" + type + '\''
+            + '}';
     }
 }

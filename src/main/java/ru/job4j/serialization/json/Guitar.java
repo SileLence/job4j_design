@@ -49,10 +49,10 @@ public class Guitar {
     
     @Override
     public String toString() {
-        return "Guitar{" +
-            "wood='" + wood + '\'' +
-            ", isElectric=" + isElectric() +
-            ", electronicComponent=" + electronicComponents +
-            '}';
+        return "Guitar{"
+            + "wood='" + wood + '\''
+            + ", isElectric=" + isElectric()
+            + ", electronicComponent=" + electronicComponents
+            + '}';
     }
 }
