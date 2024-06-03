@@ -34,7 +34,6 @@ public class Main {
         PersonData personData = gson.fromJson(personDataJson, PersonData.class);
         System.out.println(personData);
         
-        
         //5. Преобразование JSON в POJO. JsonObject [#315064]
         System.out.println("--------");
         JSONObject jsonContact = new JSONObject("{\"phone\":\"+7(924)111-111-11-11\"}");
@@ -62,7 +61,6 @@ public class Main {
         
         /* Преобразуем объект person в json-строку */
         System.out.println(new JSONObject(person));
-        
         
         /* Код для выполнения задания */
         System.out.println("--------");
