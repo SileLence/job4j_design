@@ -6,8 +6,7 @@ import java.io.RandomAccessFile;
 public class RandomAccess {
 
     public static void main(String[] args)  {
-        try {
-            RandomAccessFile randomAccess = new RandomAccessFile("data/random.txt", "rw");
+        try (RandomAccessFile randomAccess = new RandomAccessFile("data/random.txt", "rw")) {
             randomAccess.writeInt(100);
             randomAccess.writeChar('A');
             randomAccess.writeBoolean(true);
